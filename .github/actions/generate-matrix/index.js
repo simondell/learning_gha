@@ -27,7 +27,7 @@ const getMatrixItems = () => {
     //     .map(build => ({ build, target: getTargetName(build)}))
     //     ;
 
-    return items;
+    return items.join('\n');
 };
 
 const items = getMatrixItems();
