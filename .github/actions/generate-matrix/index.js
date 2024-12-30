@@ -26,9 +26,11 @@ const getMatrixItems = () => {
     //         !script.includes('alib'))
     //     .map(build => ({ build, target: getTargetName(build)}))
     //     ;
-    return items
+
+    return items;
 };
 
 const items = getMatrixItems();
-
-fs.writeFileSync(process.env.GITHUB_OUTPUT, `${OUTPUT_NAME}=${JSON.stringify(items)}`);
+const output = `${OUTPUT_NAME}=${JSON.stringify(items)}`;
+console.log('output:', output)
+fs.writeFileSync(process.env.GITHUB_OUTPUT, output);

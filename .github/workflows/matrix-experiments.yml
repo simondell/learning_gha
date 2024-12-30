@@ -19,10 +19,10 @@ jobs:
     needs: matrix-from-strings
     strategy:
       matrix:
-        strings: ${{ needs.matrix-from-strings.outputs.matrix }}
+        items: ${{ needs.matrix-from-strings.outputs.matrix }}
     steps:
       - name: echo matrix
-        run: echo "This is a string from the matrix ${{ matrix.strings }}"
+        run: echo "This is a string from the matrix ${{ matrix.items }}"
 
 
 
