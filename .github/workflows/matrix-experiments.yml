@@ -20,6 +20,7 @@ jobs:
       matrix:
         strings: ${{ needs.matrix-from-strings.outputs.matrix }}
     steps:
+      - uses: actions/checkout@v4
       - name: echo matrix
         run: echo "This is a string from the matrix ${{ matrix.strings }}"
 
