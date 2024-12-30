@@ -1,0 +1,29 @@
+name: GitHub Actions matrix experiements
+run-name: ${{ github.actor }} is testing out matrix strategies 
+
+on: [push]
+
+jobs:
+  matrix-from-strings:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.generate-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate matrix
+        id: generate-matrix
+        uses: ./.github/actions/generate-matrix/
+
+  echo-the-strings-matrix:
+    runs-on: ubuntu-latest
+    needs: matrix-from-strings
+    strategy:
+      matrix:
+        items: ${{ needs.matrix-from-strings.outputs.matrix }}
+    steps:
+      - name: echo matrix
+        run: echo "This is a string from the matrix ${{ matrix.items }}"
+
+
+
+

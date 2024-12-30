@@ -1,0 +1,8 @@
+name: Generate item matrix
+description: Parses some strings in an array and generates a list of strings from that attary at standard output
+outputs:
+  matrix:
+    description: Matrix of items
+runs:
+  using: node16
+  main: index.js
